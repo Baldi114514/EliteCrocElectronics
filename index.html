@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>精鳄电子 AcuTech</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #f3f0fa;
+      color: #333;
+    }
+
+    header {
+      background-color: #5e2ca5;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header img {
+      height: 80px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      margin: 10px 0 5px;
+    }
+
+    h2 {
+      color: #5e2ca5;
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .search-box {
+      display: flex;
+      justify-content: center;
+      margin: 30px 0;
+    }
+
+    .search-box input {
+      width: 300px;
+      padding: 10px;
+      border: 2px solid #5e2ca5;
+      border-radius: 5px 0 0 5px;
+      outline: none;
+    }
+
+    .search-box button {
+      padding: 10px 20px;
+      background-color: #5e2ca5;
+      color: white;
+      border: none;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+    }
+
+    .results {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .code-block {
+      background-color: #eee;
+      padding: 15px;
+      border-radius: 5px;
+      font-family: monospace;
+      margin-top: 15px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="your-logo.jpg" alt="精鳄电子 Logo" />
+    <h1>精鳄电子</h1>
+    <p>AcuTech - 精准科技 · 电子未来</p>
+  </header>
+
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="搜索基础代码示例...">
+    <button onclick="searchCode()">搜索</button>
+  </div>
+
+  <div class="results" id="results">
+    <!-- 搜索结果会显示在这里 -->
+  </div>
+
+  <script>
+    const codeLibrary = {
+      "html模板": `<!DOCTYPE html>
+<html>
+  <head><title>我的网页</title></head>
+  <body>
+    <h1>你好，世界！</h1>
+  </body>
+</html>`,
+      "JavaScript点击事件": `document.getElementById("btn").addEventListener("click", function() {
+  alert("按钮被点击了！");
+});`,
+      "CSS按钮样式": `button {
+  background-color: purple;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+}`
+    };
+
+    function searchCode() {
+      const query = document.getElementById("searchInput").value.trim();
+      const resultDiv = document.getElementById("results");
+      resultDiv.innerHTML = '';
+
+      let found = false;
+      for (let key in codeLibrary) {
+        if (key.includes(query)) {
+          found = true;
+          resultDiv.innerHTML += \`<h3>\${key}</h3><div class="code-block">\${codeLibrary[key]}</div>\`;
+        }
+      }
+
+      if (!found) {
+        resultDiv.innerHTML = "<p>没有找到匹配的代码示例。</p>";
+      }
+    }
+  </script>
+
+</body>
+</html>
